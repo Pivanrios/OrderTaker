@@ -2,7 +2,11 @@
 
 function Orders() {
   return (
-    <div>orders</div>
+    <>
+        <h2>Orders</h2>
+        
+    </>
+
   )
 }
 
