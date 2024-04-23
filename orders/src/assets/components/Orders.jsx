@@ -1,49 +1,39 @@
-const ordersDb = [{
-  id: 1,
-  date: "12-03-2024",
-  idCustomer: 1322,
-  custumerName: "Pedro Perez",
-  order: [{name:"lasagna", price:8}],
-  qty:1,
-  status: ["progress"]
-},
-{
-  id: 2,
-  date: "12-03-2024",
-  idCustomer: 1222,
-  custumerName: "Marlene Gonzalez",
-  order: [{name:"lasagna", price:8}],
-  qty:1,
-  status: ["progress"]
-},
-{
-  id: 3,
-  date: "13-03-2024",
-  idCustomer: 1222,
-  custumerName: "Marlene Gonzalez",
-  order: [{name:"brownie", price:8}],
-  qty:1,
-  status: ["progress"]
-}]
+import { useEffect, useState } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../../firebase-config";
 
 function Orders() {
+  //add some states to our component
+  const [orders, setOrders] = useState([]);
+  const ordersCollections = collection(db, "orders")
+  //When we refresh the page
+  useEffect(()=>{
+
+    const setData = async()=>{
+      const data = await getDocs(ordersCollections);
+      setOrders(data.docs.map((doc)=> ({...doc.data(), id:doc.id})))
+      console.log("data:",data);
+      console.log("orders",orders);
+
+    };
+    setData();
+
+  },[]);
+
   return (
     <>
         <h2>Orders</h2>
         <div>
-          {ordersDb.map(order => {
-            return(
-              <div className="container">
-                <ol className="container">
-                  <li>{order.id}</li>
-                  <li>{order.date}</li>
-                  <li>{order.custumerName}</li>
-                  <li>{order.order[0].name}</li>
-                  <li>{order.qty}</li>
-                </ol>
-              </div>
-            )
-          })}
+          {orders.map((order)=>(
+            <div className="container-row">
+              <p>{order.orderId}</p>
+              <p>{order.date}</p>
+              <p>{order.customerName}</p>
+              <p>{order.platillos}</p>
+              <p>{order.total}</p>
+              <p>{order.status}</p>
+            </div>
+          ))}
         </div>
     </>
 
