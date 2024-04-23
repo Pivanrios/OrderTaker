@@ -43,6 +43,12 @@ nav{
   background-color: bisque;
 }
 /*----------------------------------Orders---------------------------*/
+.container-row{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 5px;
+}
 div.container{
   width: auto;
 }ol.container{
