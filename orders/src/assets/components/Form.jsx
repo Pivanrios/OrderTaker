@@ -5,17 +5,19 @@ import { db } from "../../../firebase-config";
 
 function Form() {
   //create states to save the values from the input
-  const [date, setDate] = useState("");
-  const [name, setName] = useState("");
-  const [dish, setDish] = useState("");
-  const [qty, setQty] = useState(0);
+  const [newDate, setDate] = useState("");
+  const [newName, setName] = useState("");
+  const [newDish, setDish] = useState("");
+  const [newBreakroom, setBreakrooom] = useState("")
+  const [newTotal, setTotal] = useState(0);
+
   //get the collection from our database
   const ordersCollection = collection(db, "orders");
 
   const addOrder = async (e)=>{
     e.preventDefault();//prevenrts refresh and allows to start fucntion
     console.log("start to add order");
-    await addDoc(ordersCollection, {date:date, customerName:name, platillos:dish, total:qty});//add new document 
+    await addDoc(ordersCollection, {date:newDate, customerName:newName, platillos:newDish, total:newTotal});//add new document 
   };
 
   return (
@@ -26,6 +28,7 @@ function Form() {
         <label htmlFor="">Date: <input type="date" onChange={(event)=>{setDate(event.target.value)}}/></label>
         <label htmlFor="">Name: <input type="text" onChange={(event)=>{setName(event.target.value)}}/></label>
         <label htmlFor="">Platillo: <input type="text" onChange={(event)=>{setDish(event.target.value)}}/></label>
+        <label htmlFor="">Breakroom: <input type="text" onChange={(event)=>{setTotal(event.target.value)}}/></label>
         <label htmlFor="">cantidad:<input type="number" onChange={(event)=>{setQty(event.target.value)}}/></label>
         <button onClick={(e)=>{addOrder(e)}}>Submit</button>
     </form>
