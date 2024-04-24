@@ -29,6 +29,7 @@ function Orders() {
               <p>{order.date}</p>
               <p>{order.customerName}</p>
               <p>{order.platillos}</p>
+              <p>{order.breakroom}</p>
               <p>{order.total}</p>
               <p>{order.status}</p>
             </div>
