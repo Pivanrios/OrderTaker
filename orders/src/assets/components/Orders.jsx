@@ -1,32 +1,31 @@
 import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
-import { db } from "../../../firebase-config";
+import { db } from "../../../firebase-config";//import db from our configuration
 
 function Orders() {
-  //add some states to our component
+  //set our state to an empty array
   const [orders, setOrders] = useState([]);
+  //get the collection from the database
   const ordersCollections = collection(db, "orders")
   //When we refresh the page
   useEffect(()=>{
-
-    const setData = async()=>{
-      const data = await getDocs(ordersCollections);
-      setOrders(data.docs.map((doc)=> ({...doc.data(), id:doc.id})))
-      console.log("data:",data);
-      console.log("orders",orders);
-
+    //set our data
+    const setData = async()=>{//create async funtion to wait for our promes
+      console.log("Setting data...")
+      const data = await getDocs(ordersCollections);//retrieves documents from the collection "orders"
+      setOrders(data.docs.map((doc)=> ({...doc.data(), id:doc.id})))//crazy shit
+      console.log("orders found...", orders);
     };
-    setData();
-
-  },[]);
+    setData();//invoke the function
+  },[]);//empty library so will run once
 
   return (
     <>
         <h2>Orders</h2>
         <div>
           {orders.map((order)=>(
-            <div className="container-row">
-              <p>{order.orderId}</p>
+            <div className="container-row" key={order.orderId}>{//container row & add key to child
+             }<p>{order.orderId}</p>
               <p>{order.date}</p>
               <p>{order.customerName}</p>
               <p>{order.platillos}</p>
