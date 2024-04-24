@@ -8,7 +8,7 @@ function Form() {
   const [newDate, setDate] = useState("");
   const [newName, setName] = useState("");
   const [newDish, setDish] = useState("");
-  const [newBreakroom, setBreakrooom] = useState("")
+  const [newBreakroom, setBreakroom] = useState("")
   const [newTotal, setTotal] = useState(0);
 
   //get the collection from our database
@@ -17,7 +17,7 @@ function Form() {
   const addOrder = async (e)=>{
     e.preventDefault();//prevenrts refresh and allows to start fucntion
     console.log("start to add order");
-    await addDoc(ordersCollection, {date:newDate, customerName:newName, platillos:newDish, total:newTotal});//add new document 
+    await addDoc(ordersCollection, {date:newDate, customerName:newName, platillos:newDish, breakroom:newBreakroom, total:newTotal});//add new document 
   };
 
   return (
@@ -28,8 +28,8 @@ function Form() {
         <label htmlFor="">Date: <input type="date" onChange={(event)=>{setDate(event.target.value)}}/></label>
         <label htmlFor="">Name: <input type="text" onChange={(event)=>{setName(event.target.value)}}/></label>
         <label htmlFor="">Platillo: <input type="text" onChange={(event)=>{setDish(event.target.value)}}/></label>
-        <label htmlFor="">Breakroom: <input type="text" onChange={(event)=>{setTotal(event.target.value)}}/></label>
-        <label htmlFor="">cantidad:<input type="number" onChange={(event)=>{setQty(event.target.value)}}/></label>
+        <label htmlFor="">Breakroom: <input type="text" onChange={(event)=>{setBreakroom(event.target.value)}}/></label>
+        <label htmlFor="">Total:<input type="number" onChange={(event)=>{setTotal(event.target.value)}}/></label>
         <button onClick={(e)=>{addOrder(e)}}>Submit</button>
     </form>
     </>
