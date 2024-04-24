@@ -15,7 +15,7 @@ function Form() {
   const addOrder = async (e)=>{
     e.preventDefault();//prevenrts refresh and allows to start fucntion
     console.log("start to add order");
-    await addDoc(ordersCollection, {date:date, customerName:name, platillos:dish, orderId:qty});
+    await addDoc(ordersCollection, {date:date, customerName:name, platillos:dish, total:qty});//add new document 
   };
 
   return (
