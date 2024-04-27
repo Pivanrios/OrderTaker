@@ -22,6 +22,11 @@ function Form() {
       await addDoc(ordersCollection, {date:newDate, customerName:newName, platillos:newDish, breakroom:newBreakroom, total:newTotal});//add new document 
     }
   };
+  const clearForm = (e)=>{//clear form function
+    e.preventDefault();
+    console.log("Clear forms input");
+
+  }
 
   return (
     <>
@@ -34,6 +39,7 @@ function Form() {
         <label htmlFor="">Breakroom: <input type="text" required onChange={(event)=>{setBreakroom(event.target.value)}}/></label>
         <label htmlFor="">Total:<input type="number" required onChange={(event)=>{setTotal(event.target.value)}}/></label>
         <button onClick={(e)=>{addOrder(e)}}>Submit</button>
+        <button onClick={(e)=>{clearForm(e)}}>Clear</button>
     </form>
     </>
   )
