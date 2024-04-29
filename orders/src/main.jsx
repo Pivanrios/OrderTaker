@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
-import { Route,RouterProvider,Routes, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
+import { Route,RouterProvider,createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
 import Orders from './assets/components/Orders.jsx';
 import Form from './assets/components/Form.jsx';
 

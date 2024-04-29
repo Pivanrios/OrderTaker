@@ -21,10 +21,20 @@ function Orders() {
 
   return (
     <>
-        <h2>Orders</h2>
-        <div>
+        <h2 className="text-5xl font-bold">Orders</h2>
+        <div className="container flex-col ">
+          <div className="columns-8 flex-auto font-bold bg-slate-500">
+            <p>Order</p>
+            <p>Date</p>
+            <p>Name</p>
+            <p>Platillos</p>
+            <p>Breakroom</p>
+            <p>Total</p>
+            <p>Status</p>
+          </div>
           {orders.map((order)=>(
-            <div className="container-row" key={order.orderId}>{//container row & add key to child
+            <div className="columns-8 flex-auto bg-slate-200 border border-gray-950" 
+                  key={order.orderId}>{//container row & add key to child
              }<p>{order.orderId}</p>
               <p>{order.date}</p>
               <p>{order.customerName}</p>
