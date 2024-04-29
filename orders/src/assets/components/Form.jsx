@@ -46,16 +46,16 @@ function Form() {
   
   return (
     <>
-    <h2>Take Order</h2>
-    <form action="" className="container-col">
+    <h2 className="text-3xl font-bold">Take Order</h2>
+    <form action="" className="container flex flex-col bg-slate-300 gap-1 ">
         <label htmlFor="">Order Number #</label>
         <label htmlFor="">Date: <input type="date" id="dateInput" required onChange={(event)=>{setDate(event.target.value)}}/></label>
         <label htmlFor="">Name: <input type="text" id="nameInput" required onChange={(event)=>{setName(event.target.value)}}/></label>
         <label htmlFor="">Platillo: <input id="dishInput" type="text" required onChange={(event)=>{setDish(event.target.value)}}/></label>
         <label htmlFor="">Breakroom: <input type="text" id="breakroomInput" required onChange={(event)=>{setBreakroom(event.target.value)}}/></label>
         <label htmlFor="">Total:<input type="number" id="totalInput" required onChange={(event)=>{setTotal(event.target.value)}}/></label>
-        <button onClick={(e)=>{addOrder(e)}}>Submit</button>
-        <button onClick={(e)=>{clearForm(e)}}>Clear</button>
+        <button className="bg-slate-400" onClick={(e)=>{addOrder(e)}}>Submit</button>
+        <button className="bg-slate-400" onClick={(e)=>{clearForm(e)}}>Clear</button>
     </form>
     </>
   )
